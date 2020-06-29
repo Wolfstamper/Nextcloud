@@ -164,7 +164,13 @@ void ownCloudGui::slotOpenMainDialog()
 
 void ownCloudGui::slotTrayClicked(QSystemTrayIcon::ActivationReason reason)
 {
-    if (reason == QSystemTrayIcon::Trigger || reason == QSystemTrayIcon::Context) {
+    bool macos = false;
+#ifdef Q_OS_MAC
+    macos = true;
+#endif
+
+    if(reason == QSystemTrayIcon::Trigger ||
+            (macos && reason == QSystemTrayIcon::Context)){
         if (OwncloudSetupWizard::bringWizardToFrontIfVisible()) {
             // brought wizard to front
         } else if (_shareDialogs.size() > 0) {

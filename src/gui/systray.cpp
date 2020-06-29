@@ -25,6 +25,7 @@
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QScreen>
+#include <QMenu>
 
 #ifdef USE_FDO_NOTIFICATIONS
 #include <QDBusConnection>
@@ -78,6 +79,14 @@ Systray::Systray()
             return Systray::instance();
         }
     );
+
+#ifndef Q_OS_MAC
+      auto contextMenu = new QMenu();
+        contextMenu->addAction(tr("Open Settings"), this, &Systray::openSettings);
+        contextMenu->addAction(tr("Help"), this, &Systray::openHelp);
+        contextMenu->addAction(tr("Quit Nextcloud"), this, &Systray::shutdown);
+        setContextMenu(contextMenu);
+#endif
 
     connect(UserModel::instance(), &UserModel::newUserSelected,
         this, &Systray::slotNewUserSelected);
@@ -259,7 +268,7 @@ QRect Systray::taskbarGeometry() const
 #else
     if (taskbarOrientation() == TaskBarPosition::Bottom || taskbarOrientation() == TaskBarPosition::Top) {
         auto screenWidth = currentScreenRect().width();
-        return QRect(0, 0, screenWidth, 32);
+        return {0, 0, screenWidth, 32};
     } else {
         auto screenHeight = currentScreenRect().height();
         return QRect(0, 0, 32, screenHeight);
