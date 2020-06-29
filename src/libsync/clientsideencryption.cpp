@@ -160,11 +160,11 @@ namespace {
         Q_DISABLE_COPY(PKeyCtx)
 
         PKeyCtx()
-            : _ctx(nullptr)
+             
         {
         }
 
-        EVP_PKEY_CTX* _ctx;
+        EVP_PKEY_CTX* _ctx = nullptr;
     };
 
     class PKey {
@@ -218,11 +218,11 @@ namespace {
         Q_DISABLE_COPY(PKey)
 
         PKey()
-            : _pkey(nullptr)
+             
         {
         }
 
-        EVP_PKEY* _pkey;
+        EVP_PKEY* _pkey = nullptr;
     };
 
 

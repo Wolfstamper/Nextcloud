@@ -26,7 +26,7 @@ ElidedLabel::ElidedLabel(QWidget *parent)
 ElidedLabel::ElidedLabel(const QString &text, QWidget *parent)
     : QLabel(text, parent)
     , _text(text)
-    , _elideMode(Qt::ElideNone)
+     
 {
 }
 

@@ -114,8 +114,8 @@ HttpCredentials::HttpCredentials(const QString &user, const QString &password, c
     , _ready(true)
     , _clientSslKey(key)
     , _clientSslCertificate(certificate)
-    , _keychainMigration(false)
-    , _retryOnKeyChainError(false)
+    , 
+     _retryOnKeyChainError(false)
 {
 }
 

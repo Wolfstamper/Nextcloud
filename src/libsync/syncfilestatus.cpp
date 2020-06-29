@@ -21,7 +21,7 @@ SyncFileStatus::SyncFileStatus()
 
 SyncFileStatus::SyncFileStatus(SyncFileStatusTag tag)
     : _tag(tag)
-    , _shared(false)
+     
 {
 }
 

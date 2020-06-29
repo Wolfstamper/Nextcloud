@@ -271,7 +271,7 @@ QRect Systray::taskbarGeometry() const
         return {0, 0, screenWidth, 32};
     } else {
         auto screenHeight = currentScreenRect().height();
-        return QRect(0, 0, 32, screenHeight);
+        return {0, 0, 32, screenHeight};
     }
 #endif
 }
